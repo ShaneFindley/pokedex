@@ -1,0 +1,49 @@
+header.pokemon-header {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.pokemon-header.back {
+    text-align: left;
+    height: 100%;
+}
+
+.pokemon-header.forward {
+    text-align: right;
+    height: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+
+    header.pokemon-header {
+        font-size: 32px;
+    }
+
+    .pokemon-header.back {
+        text-align: left;
+        height: 100%;
+    }
+    
+    .pokemon-header.forward {
+        text-align: right;
+        height: 100%;
+    }
+}
+  
+@media only screen and (min-width: 800px) {
+
+    header.pokemon-header {
+        font-size: 32px;
+    }
+
+    .pokemon-header.back {
+        text-align: left;
+        height: 100%;
+    }
+
+    .pokemon-header.forward {
+        text-align: right;
+        height: 100%;
+    }
+}

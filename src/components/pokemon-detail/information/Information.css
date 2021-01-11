@@ -1,0 +1,76 @@
+.pokemon-info {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 30px 30px auto auto;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.pokemon-info label {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.pokemon-info > .height > div,
+.pokemon-info > .weight > div {
+    display: inline-block;
+}
+
+
+.pokemon-info > .height {
+    grid-row: 1;
+}
+
+.pokemon-info > .weight {
+    grid-row: 2;
+}
+
+.pokemon-info > .abilities {
+    grid-row: 3;
+    display: inline-block;
+}
+
+.pokemon-info > .classes {
+    grid-row: 4;
+    display: inline-block;
+}
+
+.pokemon-info > .abilities .item,
+.pokemon-info > .classes .item {
+    padding: 5px 10px;
+    border-radius: 3px;
+    margin: 3px;
+    background-color: lightgrey;
+    min-width: 50px;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+}
+
+.pokemon-info > .abilities .item,
+.pokemon-info > .classes .item {
+    display: inline-block;
+}
+
+.pokemon-info > .classes .normal { background-color: #505050; }
+.pokemon-info > .classes .fighting { background-color: #551414; }
+.pokemon-info > .classes .flying { background-color: #477070; }
+.pokemon-info > .classes .poison { background-color: #7c0a7c; }
+.pokemon-info > .classes .ground { background-color: #582f14; }
+.pokemon-info > .classes .rock { background-color: #636363; }
+.pokemon-info > .classes .bug { background-color: #729f3f; }
+.pokemon-info > .classes .ghost { background-color: #7b62a3; }
+.pokemon-info > .classes .steel { background-color: #6c7097; }
+.pokemon-info > .classes .fire { background-color: #b82208; }
+.pokemon-info > .classes .water { background-color: #0092ac; }
+.pokemon-info > .classes .grass { background-color: #00801c; }
+.pokemon-info > .classes .electric { background-color: #e8ec00; }
+.pokemon-info > .classes .psychic { background-color: #f366b9; }
+.pokemon-info > .classes .ice { background-color: #89dbe6; }
+.pokemon-info > .classes .dragon { background-color: #b683b6; }
+.pokemon-info > .classes .dark { background-color: #707070; }
+.pokemon-info > .classes .fairy { background-color: #ff2aff; }
+.pokemon-info > .classes .unknown { background-color: #afa94d; }
+.pokemon-info > .classes .shadow { background-color: #800080; }

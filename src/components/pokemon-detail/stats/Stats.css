@@ -1,0 +1,18 @@
+.pokemon-stats {
+    display: grid;
+    padding: 20px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.pokemon-stats > .stat {
+    font-weight: bold;
+    font-size: 15px;
+    grid-column: 1;
+}
+
+.pokemon-stats > .value {
+    grid-column: 2;
+    text-align: right;
+}

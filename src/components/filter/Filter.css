@@ -1,0 +1,69 @@
+.filters {
+    display: grid;
+    grid-template-rows: auto auto 20px auto auto;
+    padding: 10px;
+    padding-bottom: 20px;
+}
+
+.filters label {
+    font-size: 15px;
+}
+
+.filters > .text-filter-label {
+    grid-row: 1;
+}
+
+.filters > .text-filter {
+    grid-row: 2;
+}
+
+.filters > .my-pokemon-label {
+    grid-row: 4;
+}
+
+.filters > .switch {
+    grid-row: 5;
+    padding-top: 15px;
+}
+
+.filters > .switch label input[type=checkbox]:checked+.lever {
+    background-color: #3761a8;
+}
+
+.filters > .switch label input[type=checkbox]:checked+.lever:after {
+    background-color: #1f3761;
+}
+
+@media only screen and (min-width: 600px) {
+    .filters {
+        grid-template-columns: 1fr 1fr 1fr 10px 1fr;
+        grid-template-rows: auto auto;
+    }
+
+    .filters label {
+        font-size: 15px;
+    }
+    
+    .filters > .text-filter-label {
+        grid-row: 1;
+        grid-column: 1;
+    }
+    
+    .filters > .text-filter {
+        grid-row: 2;
+        grid-column: 1 / span 3;
+    }
+    
+    .filters > .my-pokemon-label {
+        grid-row: 1;
+        grid-column: 5;
+        text-align: right;
+    }
+    
+    .filters > .switch {
+        grid-row: 2;
+        grid-column: 5;
+        padding-top: 15px;
+        text-align: right;
+    }
+}

@@ -1,0 +1,7 @@
+.actions {
+    text-align: center;
+}
+
+.actions > .action {
+    margin: 10px 10px;
+}
