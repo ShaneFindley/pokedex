@@ -38,6 +38,7 @@ Pokémon number
 * I tried to design the page based on the color pallete of the main pokemon logo, also due to the nature of the product I thought it was better to use a rich colorful design, it might be a little too much but I felt that it fit with the style of the product.
 * I would consider additional Icons and autocomplete features on the search filter.   
 * Alternatively it would have been nice to have My Pokemon on a separate panel.   
+
 ### Technical observations
 * Pagination on the main grid would improve general performance and would make the application more user friendly.
 * Use of Virtualized components would improve grid performance.   
@@ -49,6 +50,8 @@ Pokémon number
 ### Testing
 * I would like to have done more testing but for now I have included some basic testing.
    
+   
+![Alt text](/screenshot.png?raw=true "Optional Title")
    
 ## Running the application
    
