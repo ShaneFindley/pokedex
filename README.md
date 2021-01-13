@@ -40,8 +40,6 @@ Pokémon number
 * Alternatively it would have been nice to have My Pokemon on a separate panel.   
 
 ### Technical observations
-* Pagination on the main grid would improve general performance and would make the application more user friendly.
-* Use of Virtualized components would improve grid performance.   
 * Hiding of Redux functionality behind context means that it could be quickly and easilly swapped out however it isn't really necessary. Also the duplication of Providers could quite easilly be replaced with a singular generic HOC.   
 * It would be very simple to introduce LESS, SASS or even a more React focused library such as styled components; for simplicity however I stuck to pure css for the time being.   
 * I wouldn't advocate using react-materialize, I wanted to make use of it for some of its components such as Select, AutoComplete and simple Buttons, however in hindsight this wasn't necessary and I had many issues with Typescript.   

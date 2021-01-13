@@ -5,22 +5,27 @@ import { PokedexContext } from "../context/Pokedex-Provider";
 import { PokemonCard } from "../pokemon-card/Pokemon-Card";
 
 import './Pokemon-Grid.css';
+import { PokemonPagination } from "./Pokemon-Pagination";
 
 export const PokemonGrid: React.FC = () => {
 
+    const { selected, pageSize, page } = useContext(PokedexContext);
     const pokemon = usePokemon(true);
-    const { selected } = useContext(PokedexContext);
 
     if (selected) {
         return null;
     }
 
-    const items = pokemon && Array.isArray(pokemon.results) 
-        ? pokemon.results.map((pokemon) => <PokemonCard key={pokemon.id} pokemon={pokemon} className='grid-item'></PokemonCard>) 
+    const startPosition = (page - 1) * pageSize;
+    const endPosition = page * pageSize - 1;
+
+    const items = pokemon && Array.isArray(pokemon.results)
+        ? pokemon.results.slice(startPosition, endPosition).map((pokemon) => <PokemonCard key={pokemon.id} pokemon={pokemon} className='grid-item'></PokemonCard>)
         : [];
 
-    return <div className="pokemon-grid">
-        { pokemon?.error && <div>An error occured whilst retrieving pokemon details.</div>}
-        {items}
-    </div>;
+    return <PokemonPagination count={pokemon.count}>
+        <div className="pokemon-grid">
+            {items}
+        </div>
+    </PokemonPagination>;
 }

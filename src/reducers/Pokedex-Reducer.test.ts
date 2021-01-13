@@ -1,16 +1,20 @@
 import { IEnrichedDetail } from "../types/Pokemon";
-import { clear, pokedexReducer, select, setPokemon, setFilter } from "./Pokedex-Reducer";
+import { clear, pokedexReducer, select, setPokemon, setFilter, setPage, setPageSize } from "./Pokedex-Reducer";
 
 describe('Pokedex-Reducer', () => {
     it('should return a default state when handling a clear action.', () => {
         expect(pokedexReducer({
             filter: null,
             options: [],
-            selected: null
+            selected: null,
+            page: 1,
+            pageSize: 20
         }, clear)).toEqual({
             filter: null,
             options: [],
-            selected: null
+            selected: null,
+            page: 1,
+            pageSize: 20
         });
     });
 
@@ -24,7 +28,9 @@ describe('Pokedex-Reducer', () => {
         const { filter, options, selected } = pokedexReducer({
             filter: null,
             options: [],
-            selected: null
+            selected: null,
+            page: 1,
+            pageSize: 20
         }, setPokemon(pokemon));
         
         expect(filter).toBeNull();
@@ -40,7 +46,9 @@ describe('Pokedex-Reducer', () => {
         const { filter, options, selected } = pokedexReducer({
             filter: null,
             options: [],
-            selected: null
+            selected: null,
+            page: 1,
+            pageSize: 20
         }, select(pokemon));
         
         expect(filter).toBeNull();
@@ -55,7 +63,9 @@ describe('Pokedex-Reducer', () => {
         const { filter, options, selected } = pokedexReducer({
             filter: null,
             options: [],
-            selected: null
+            selected: null,
+            page: 1,
+            pageSize: 20
         }, setFilter('test'));
         
         expect(filter).not.toBeNull();
@@ -63,5 +73,29 @@ describe('Pokedex-Reducer', () => {
         expect(selected).toBeNull();
         expect(options).not.toBeNull();
         expect(options.length).toEqual(0);
+    });
+
+    it('should set the page value when handling a setPage action.', () => {
+        const { page } = pokedexReducer({
+            filter: null,
+            options: [],
+            selected: null,
+            page: 1,
+            pageSize: 20
+        }, setPage(2));
+        
+        expect(page).toEqual(2);
+    });
+
+    it('should set the page size value when handling a setPageSize action.', () => {
+        const { pageSize } = pokedexReducer({
+            filter: null,
+            options: [],
+            selected: null,
+            page: 1,
+            pageSize: 20
+        }, setPageSize(2));
+        
+        expect(pageSize).toEqual(2);
     });
 });

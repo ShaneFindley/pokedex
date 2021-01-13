@@ -16,21 +16,21 @@ interface IPokemonResponse {
 
 interface IUsePokemon {
     results: IEnrichedDetail[];
-    error: any;
+    count: number;
 }
 
 export const usePokemon = (mocked: boolean): IUsePokemon => {
     const dispatch = useDispatch();
     const { filter, options } = useContext(PokedexContext);
-    const { items, onlyMyPokemon } = useContext(MyPokemonContext);
+    const { items: myPokemon, onlyMyPokemon } = useContext(MyPokemonContext);
 
     // To avoid bombarding pokeapi.co I pulled their data and created mocks for testing.
-    const [url, setUrl] = useState<string>(mocked 
+    const [url, setUrl] = useState<string>(mocked
         ? './mock/pokemon-limit100-offset0.json'
         : 'https://pokeapi.co/api/v2/pokemon/?limit=100&offset=0'
     );
-    
-    const { data, error } = useSWR<IPokemonResponse, Error>(url, { revalidateOnFocus: false });
+
+    const { data } = useSWR<IPokemonResponse, Error>(url, { revalidateOnFocus: false });
 
     useEffect(() => {
         if (data) {
@@ -49,18 +49,29 @@ export const usePokemon = (mocked: boolean): IUsePokemon => {
     }, [data, data?.next, dispatch, options]);
 
     const filteredResults = useMemo(() => {
-        if (filter) {
-            return options.filter(pokemon => pokemon.name.indexOf(filter as string) >= 0 || pokemon.id === Number(filter));
-        } else {
-            return options;
+
+        let filteredResults = [];
+        for (let option of options) {
+            let valid = true;
+            if (onlyMyPokemon) {
+                valid = myPokemon.indexOf(option.id) !== -1;
+            }
+            
+            if (valid && filter) {
+                valid = option.name.indexOf(filter as string) >= 0 || option.id === Number(filter)
+            } 
+            
+            if (valid) {
+                filteredResults.push(option);
+            }
         }
-    }, [filter, options]);
+        
+        return filteredResults;
+    }, [filter, options, onlyMyPokemon, myPokemon]);
 
     return {
-        results: onlyMyPokemon
-            ? filteredResults.filter(o => items.indexOf(o.id) !== -1) 
-            : filteredResults,
-        error: error
+        results: filteredResults,
+        count: filteredResults.length
     };
 }
 

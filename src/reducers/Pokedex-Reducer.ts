@@ -5,6 +5,8 @@ export interface IPokedexSlice {
     filter: string | null;
     options: IEnrichedDetail[];
     selected: IEnrichedDetail | null;
+    page: number;
+    pageSize: number;
 }
 
 export const pokedexSlice = createSlice<IPokedexSlice, SliceCaseReducers<IPokedexSlice>, string>({
@@ -12,7 +14,9 @@ export const pokedexSlice = createSlice<IPokedexSlice, SliceCaseReducers<IPokede
     initialState: {
         filter: null,
         options: [],
-        selected: null
+        selected: null,
+        page: 1,
+        pageSize: 20
     },
     reducers: {
         clear: (state: IPokedexSlice) => {
@@ -27,10 +31,16 @@ export const pokedexSlice = createSlice<IPokedexSlice, SliceCaseReducers<IPokede
         },
         setFilter: (state: IPokedexSlice, action: PayloadAction<string>) => {
             state.filter = action.payload;
+        },
+        setPage: (state: IPokedexSlice, action: PayloadAction<number>) => {
+            state.page = action.payload;
+        },
+        setPageSize: (state: IPokedexSlice, action: PayloadAction<number>) => {
+            state.pageSize = action.payload;
         }
     }
 });
 
-export const { clear, select, setPokemon, setFilter } = pokedexSlice.actions;
+export const { clear, select, setPokemon, setFilter, setPage, setPageSize } = pokedexSlice.actions;
 
 export const pokedexReducer = pokedexSlice.reducer;
