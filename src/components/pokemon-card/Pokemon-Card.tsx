@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useMemo } from 'react';
 import { Icon } from 'react-materialize';
 import { useDispatch } from 'react-redux';
 
@@ -14,15 +14,19 @@ export const PokemonCard: React.FC<{ pokemon: IEnrichedDetail, className: string
     const dispatch = useDispatch();
     const { items } = useContext(MyPokemonContext)
 
+    // creating a dictionary of ids would probably increase performance.
     const inMyPokemon = items.indexOf(pokemon.id) >= 0;
-    const onClickMyPokemon = (e: React.MouseEvent<HTMLButtonElement>) => { 
+
+    // switch to using useMemo to improve performance, doesnt require constant regenerating.
+    const onClickMyPokemon = useMemo(() => (e: React.MouseEvent<HTMLButtonElement>) => { 
         e.stopPropagation();
+        // Consideration: this will create a closure on the inMyPokemon value.
         if (inMyPokemon) {
             dispatch(remove(pokemon));
         } else {
             dispatch(add(pokemon));
         }
-    }
+    }, [dispatch, inMyPokemon, pokemon]);
 
     return <section
         className={`pokemon-card ${className}`}
