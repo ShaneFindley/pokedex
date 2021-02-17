@@ -19,6 +19,7 @@ export const Filter = () => {
         return null;
     }
 
+    // Adding a full autocomplete dropdown here would be nice.
     return <div className='filters'>
         <label className='text-filter-label'>Filter</label>
         <input
