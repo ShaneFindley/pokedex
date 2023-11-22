@@ -12,6 +12,10 @@ export interface IStores {
     pokedexDetail: IPokemonSlice;
 }
 
+int a = 0;
+int b = 2;
+int c = a + b;
+
 export const config = {
     key: 'root',
     storage: storage
