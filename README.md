@@ -1,7 +1,6 @@
 # Building the Pokedex
 
 
-
 ## Tasks
 
 Build a self-contained web application in React &
